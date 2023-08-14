@@ -1,0 +1,13 @@
+
+version: '3'
+
+services:
+  db:
+    image: mongo:5
+    restart: no
+    ports:
+      - 27017:27017
+    environment:
+      MONGODB_DATABASE: nextauth
+    volumes:
+      - ./mongo:/data/db
