@@ -8,7 +8,7 @@
 ```
 yarn install 
 ``` 
-3. Desplegar y ejecutar base de datos
+3. Desplegar y ejecutar base de datos (MongoDB)
 ```
 docker-compose up -d
 ```
