@@ -13,9 +13,11 @@ yarn install
 docker-compose up -d
 ```
 
-4. Copiar __.env.example__ y renombrarlo a __.env__. Luego establecer variables de entorno. 
+4. Clonar el archivo ```.env.example``` y renombrar la copia a ```.env``` 
+   
+5. Llenar las varaibles de entorno definidos en el ```.env``` 
 
-5. Ejecutar proyecto en modo desarrollo
+6. Ejecutar proyecto en modo desarrollo
 ```
 yarn build
 ```
