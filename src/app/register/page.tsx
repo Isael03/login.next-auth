@@ -1,6 +1,5 @@
 'use client'
 import axios, {AxiosError} from 'axios';
-import { log } from 'console';
 import { FormEvent, useState } from 'react';
 
 export default function RegisterPage() {

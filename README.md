@@ -19,9 +19,21 @@ docker-compose up -d
 
 6. Ejecutar proyecto en modo desarrollo
 ```
-yarn build
+yarn dev
 ```
 
 ## Requisitos
 * Node version >= 18.15.0
 * Docker
+
+## Uso
+
+1. Registrar previamente un usuario en la base de datos, por medio de:
+```
+http://localhost:3000/register
+```
+
+2. Para cerrar sesión
+```
+http://localhost:3000/api/auth/signout
+```
