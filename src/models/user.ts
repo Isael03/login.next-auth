@@ -14,7 +14,7 @@ const  userSchema = new Schema({
         select:false
 
     },
-    fullName:{
+    fullname:{
         type:String,
         require:[true, "Nombre es requerido"],
         minLength:[3, "Debe contener mínimo 3 caracteres"],
