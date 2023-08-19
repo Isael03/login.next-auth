@@ -7,13 +7,13 @@ export default function DashboardPage() {
 
   console.log(session);
   
-  const name = (session?.user?.name)
+  const name = session?.user?.name
 
-  return <div>
-    <h1 >Dashboard</h1>
-    <h2>Bienvenido {name} </h2>
+  return <div className="flex justify-center flex-col items-center gap-y-5 mt-4">
+    <h1 className="font-bold text-3xl">Dashboard</h1>
+    <h2 className="text-2xl">Bienvenido {name} </h2>
 
-    <pre>{JSON.stringify({
+    <pre className="bg-zinc-800 p-4 ">{JSON.stringify({
       session,
       status
     })}</pre>

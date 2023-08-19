@@ -1,77 +1,39 @@
 'use client'
-import axios, {AxiosError} from 'axios';
-import { FormEvent, useState } from 'react';
-import {signIn, useSession} from 'next-auth/react'
-import {useRouter} from 'next/navigation'
+
+import useRegister from './hooks/useRegister.hook';
 
 export default function RegisterPage() {
 
-  const [error, setError] = useState()
-
-  const router = useRouter()
-  const {update}= useSession()
-
-  async function handleSubmit(e:FormEvent<HTMLFormElement>){
-
-    e.preventDefault()
-
-    const formdata = new FormData(e.currentTarget)
-
-    const email = formdata.get('email')
-    const fullname = formdata.get('fullname')
-    const password = formdata.get('password')
-
-    try {
-      const resSignup = await axios.post('/api/auth/signup', {email, password, fullname})
-
-      // Loguear Usuario y redirigirlo
-      const res = await signIn('credentials',{
-        email:resSignup.data.email,
-        password: password,
-        redirect:false,
-        //callbackUrl:"/dashboard",
-      })
-
-      update({name: fullname, email: resSignup.data.email })
-
-      if(res?.ok) return router.push("/dashboard")
-    } catch (error) {
-
-      if(error instanceof AxiosError) {
-        setError(error.response?.data.message)
-     
-      }
-    }
-    
-  }
+  const {error, handleSubmit} = useRegister() 
+  
   return (
-    <div>
+    <div className='h-1/4 flex justify-center items-center mt-4'>
 
+      <form className='bg-neutral-950 px-8 py-10 w-3/12' onSubmit={handleSubmit}>
       {error && <div className="bg-red-500 text-white p-2 mb-2">{error}</div>}
-      <h1>Signup</h1>
-      <form  onSubmit={handleSubmit}>
+      <h1 className='text-4xl font-bold mb-7'>Signup</h1>
         <input
           type="text"
           name="fullname"
           id="fullname"
           placeholder="Fernando Olivera"
-          className="bg-zinc-800 px-4 py-2 block mb-2"
+          className="bg-zinc-800 px-4 py-2 block mb-2 w-full rounded"
         />
         <input
           type="text"
           name="email"
           id="email"
           placeholder="fernando@email.com"
-          className="bg-zinc-800 px-4 py-2 block mb-2"
+          className="bg-zinc-800 px-4 py-2 block mb-2 w-full rounded"
         />
         <input
           type="password"
           name="password"
           id="password"
           placeholder="********"
-          className="bg-zinc-800 px-4 py-2 block mb-2"
+          className="bg-zinc-800 px-4 py-2 block mb-2 w-full rounded"
         />
-      <button type="submit" className="bg-indigo-500 px-4 py-2">Registro</button>
+      <button type="submit" className="bg-indigo-500 px-4 py-2 mt-4 w-full rounded">Registro</button>
       </form>
 
     </div>

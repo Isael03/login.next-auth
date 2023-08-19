@@ -1,5 +1,6 @@
 # Proyecto prueba de Next Auth
 
+Prueba de características de Next Auth
 ## Getting Started
 
 1. Clonar repositorio
@@ -27,13 +28,12 @@ yarn dev
 * Docker
 
 ## Uso
-
-1. Registrar previamente un usuario en la base de datos, por medio de:
+* Registrar previamente un usuario en la base de datos, por medio de:
 ```
 http://localhost:3000/register
 ```
 
-2. Para cerrar sesión
+* Ejecutar semilla para registar datos de forma inmediata:
 ```
-http://localhost:3000/api/auth/signout
+POST http://localhost:3000/seed
 ```

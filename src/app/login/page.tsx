@@ -1,66 +1,34 @@
 'use client'
+import uselogin from "./hooks/useLogin.hook";
 
-import { FormEvent, useState } from 'react';
-import {signIn} from 'next-auth/react'
-import {useRouter} from 'next/navigation'
-import Link from 'next/link';
 
 export default function LoginPage() {
 
-  const [error, setError] = useState<string>("")
-
-  const router = useRouter()
-
-  async function handleSubmit(e:FormEvent<HTMLFormElement>){
-
-    e.preventDefault()
-
-    const formdata = new FormData(e.currentTarget)
-
-    const email = formdata.get('email')
-    const password = formdata.get('password')
-
-    try {
-        // Loguear Usuario y redirigirlo
-        const res = await signIn('credentials',{
-          email:email?.toString().trim(),
-          password: password?.toString().trim(),
-          redirect:false,
-        })
-  
-        
-        if(res?.error) return setError(res?.error as string)
-        if(res?.ok) return router.push("/dashboard")
-    } catch (error) {
-      console.log(error);
-    }
-    
-  }
+  const {error, handleSubmit } = uselogin()
   return (
-    <div>
+    <div className='h-1/4 flex justify-center items-center mt-4'>
 
-      {error && <div className="bg-red-500 text-white p-2 mb-2">{error}</div>}
-      <h1>Signin</h1>
-      <form  onSubmit={handleSubmit}>
+      <form className='bg-neutral-950 px-8 py-10 w-3/12' onSubmit={handleSubmit}>
     
+      {error && <div className="bg-red-500 text-white p-2 mb-2">{error}</div>}
+
+      <h1 className='text-4xl font-bold mb-7'>Signin</h1>
         <input
           type="text"
           name="email"
           id="email"
           placeholder="fernando@email.com"
-          className="bg-zinc-800 px-4 py-2 block mb-2"
+          className="bg-zinc-800 px-4 py-2 block mb-2 w-full rounded"
         />
         <input
           type="password"
           name="password"
           id="password"
           placeholder="********"
-          className="bg-zinc-800 px-4 py-2 block mb-2"
+          className="bg-zinc-800 px-4 py-2 block mb-2 w-full rounded"
         />
-      <button type="submit" className="bg-indigo-500 px-4 py-2">Login</button>
+      <button type="submit" className="bg-indigo-500 px-4 py-2 mt-4 w-full rounded">Login</button>
       </form>
-      <Link href="register">Registrarse</Link>
-
     </div>
   );
 }
