@@ -33,7 +33,8 @@ yarn dev
 http://localhost:3000/register
 ```
 
-* Ejecutar semilla para registar datos de forma inmediata:
+* Ejecutar semilla para registar datos de forma inmediata (contraseña por defecto: 123456):
 ```
 POST http://localhost:3000/seed
 ```
+
