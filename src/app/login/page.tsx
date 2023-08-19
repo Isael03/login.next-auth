@@ -12,7 +12,7 @@ export default function LoginPage() {
     
       {error && <div className="bg-red-500 text-white p-2 mb-2">{error}</div>}
 
-      <h1 className='text-4xl font-bold mb-7'>Signin</h1>
+      <h1 className='text-4xl font-bold mb-7'>Iniciar Sesión</h1>
         <input
           type="text"
           name="email"
@@ -27,7 +27,7 @@ export default function LoginPage() {
           placeholder="********"
           className="bg-zinc-800 px-4 py-2 block mb-2 w-full rounded"
         />
-      <button type="submit" className="bg-indigo-500 px-4 py-2 mt-4 w-full rounded">Login</button>
+      <button type="submit" className="bg-yellow-600 px-4 py-2 mt-4 w-full rounded">Login</button>
       </form>
     </div>
   );
